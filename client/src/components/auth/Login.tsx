@@ -5,6 +5,7 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function Login() {
   const [email, setEmail] = useState('');
+
   const [password, setPassword] = useState('');
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { RootState } from '../../app/type';
+import type { RootState } from '../../../../../new-major-project-copy/client/src/app/type';
 
 export interface CoreState {
   isLoading: boolean;

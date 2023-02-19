@@ -12,12 +12,14 @@ import {
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import React, { useState } from 'react';
-import logo from '../../images/titles/manit-logo.png';
 
 const useStyles = makeStyles((theme) => {});
 
 export const Navbar = () => {
   const [value, setValue] = useState('');
+
+  const isLoggedIn: Boolean = false;
+
   return (
     <Box
       display='flex'
@@ -59,21 +61,29 @@ export const Navbar = () => {
             STUDENT ACTIVITY PORTAL
           </Typography>
         </Box>
-        <Box display='flex' gap={1}>
-          <Button variant='contained' href='/auth/log-in' color='primary'>
-            LOG IN
-          </Button>
-          <Button variant='contained' href='/auth/sign-up' color='secondary'>
-            SIGN UP
-          </Button>
-        </Box>
+        {isLoggedIn ? (
+          <Box display='flex' gap={1}>
+            <Button variant='contained' href='/user/dashboard' color='secondary'>
+              USER PROFILE
+            </Button>
+          </Box>
+        ) : (
+          <Box display='flex' gap={1}>
+            <Button variant='contained' href='/auth/log-in' color='primary'>
+              LOG IN
+            </Button>
+            <Button variant='contained' href='/auth/sign-up' color='secondary'>
+              SIGN UP
+            </Button>
+          </Box>
+        )}
       </Box>
 
       <Box sx={{ backgroundColor: '#60BEDC' }}>
         <Grid container display='flex' flexWrap='wrap'>
           <Grid item xs={6} md={3}>
             <FormControl variant='outlined' sx={{ width: '100%' }}>
-              <InputLabel sx={{ color: 'white' }} id='demo-simple-select-label'>
+              <InputLabel shrink={false} sx={{ color: 'white' }} id='demo-simple-select-label'>
                 Industry Type
               </InputLabel>
               <Select
@@ -90,7 +100,7 @@ export const Navbar = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <FormControl variant='outlined' sx={{ width: '100%' }}>
-              <InputLabel sx={{ color: 'white' }} id='demo-simple-select-label'>
+              <InputLabel shrink={false} sx={{ color: 'white' }} id='demo-simple-select-label'>
                 Industry Type
               </InputLabel>
               <Select
@@ -107,7 +117,7 @@ export const Navbar = () => {
           </Grid>
           <Grid item xs={6} md={3}>
             <FormControl variant='outlined' sx={{ width: '100%' }}>
-              <InputLabel sx={{ color: 'white' }} id='demo-simple-select-label'>
+              <InputLabel shrink={false} sx={{ color: 'white' }} id='demo-simple-select-label'>
                 Industry Type
               </InputLabel>
               <Select
@@ -132,6 +142,7 @@ export const Navbar = () => {
                   },
                 }}
                 id='demo-simple-select-label'
+                shrink={false}
               >
                 Industry Type
               </InputLabel>

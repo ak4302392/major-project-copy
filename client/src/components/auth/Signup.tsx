@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 export const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -12,6 +13,9 @@ export const Signup = () => {
   };
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
+  };
+  const handlePhoneChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPhone(event.target.value);
   };
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
@@ -64,6 +68,13 @@ export const Signup = () => {
           onChange={handleEmailChange}
         />
         <TextField
+          name='phone'
+          label='Mobile Number'
+          type='text'
+          value={phone}
+          onChange={handlePhoneChange}
+        />
+        <TextField
           name='password'
           label='Password'
           type='text'
@@ -79,7 +90,7 @@ export const Signup = () => {
         />
       </Box>
 
-      <Box width="100%" my={[2]}>
+      <Box width='100%' my={[2]}>
         <FormControlLabel
           control={<Switch checked={state.checked} onChange={handleChange} />}
           label={

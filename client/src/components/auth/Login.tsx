@@ -5,7 +5,6 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 
 export default function Login() {
   const [email, setEmail] = useState('');
-
   const [password, setPassword] = useState('');
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,10 +44,12 @@ export default function Login() {
           name='email'
           type='email'
           value={email}
+          placeholder='E-mail'
           onChange={handleEmailChange}
         />
         <TextField
           name='password'
+          placeholder='password'
           type={showPassword ? 'text' : 'password'}
           value={password}
           onChange={handlePasswordChange}

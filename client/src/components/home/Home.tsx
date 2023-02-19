@@ -1,67 +1,100 @@
 import { makeStyles } from '@material-ui/styles';
-import { Box, Grid, Paper, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import React from 'react';
-// import { Carousel } from '@brainhubeu/react-carousel';
+// import Carousel from 'react-material-ui-carousel';
+import EventBox, { eventBoxprops } from '../utils/event-box/EventBox';
+import EventOverview, { overviewBoxProps } from '../utils/event-overview/EventOverview';
 
-const news: string[] = [
-  'Hello there how are you how is it going',
-  'I am fine. check this out',
-  'Hey there',
+const items1 = [
+  {
+    name: 'Item 1',
+    description: 'Description 1',
+    image: 'https://via.placeholder.com/300',
+  },
+  {
+    name: 'Item 2',
+    description: 'Description 2',
+    image: 'https://via.placeholder.com/300',
+  },
+  {
+    name: 'Item 3',
+    description: 'Description 3',
+    image: 'https://via.placeholder.com/300',
+  },
 ];
 
-const items = [
-  {
-    title: 'Item 1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+const news: eventBoxprops = {
+  heading: 'news highlights',
+  links: [
+    {
+      title: 'Lorem ipsum lorem ipsum it is',
+      href: '',
+    },
+    {
+      title: 'Lorem ipsum lorem ipsum it is',
+      href: '',
+    },
+    {
+      title: 'Lorem ipsum lorem ipsum it is',
+      href: '',
+    },
+    {
+      title: 'Lorem ipsum lorem ipsum it is',
+      href: '',
+    },
+    {
+      title: 'Lorem ipsum lorem ipsum it is',
+      href: '',
+    },
+  ],
+  button: {
+    name: 'view all events',
+    href: '',
   },
-  {
-    title: 'Item 2',
-    description: 'Suspendisse euismod magna vitae enim tincidunt, in malesuada tortor',
+};
+
+const newsOverview: overviewBoxProps = {
+  title: 'news overview',
+  eventLink: '',
+  images: [''],
+  content:
+    "Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum. lorem ipsum's",
+  button: {
+    name: 'LOGIN to REGISTER',
+    href: '',
   },
-  {
-    title: 'Item 3',
-    description: 'Aliquam et massa dictum, dictum augue vel, blandit velit',
-  },
-];
+};
 
 const useStyles = makeStyles({
-  anchorTag: {
-    color: 'white',
-    '&: hover': {
-      color: 'black',
+  newsBox: {
+    '&::-webkit-scrollbar': {
+      width: '6px',
+      background: '#D9D9D9',
+      borderRadius: '20px',
+      margin: '10px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(30, 30, 30, 0.5)',
+      borderRadius: '20px',
+    },
+  },
+  invisibleScrollBar: {
+    '&::-webkit-scrollbar': {
+      display: 'none',
     },
   },
 });
 
 export const HomePage = () => {
+  //temp data
+  const isLoggedIN: Boolean = false;
   const classes = useStyles();
   return (
-    <Box px={[1, 3, 5, 7]} mt={[3, 4, 7]}>
-      <Grid container sx={{ height: '300px' }}>
-        <Grid item sm={12} md={8} sx={{ backgroundColor: '#45B3D6' }}>
-          <Box p={[0.5, 1, 2]}>
-            <Box mb={[1, 2]}>
-              <Typography variant='h6' color='white'>
-                NEWS HIGHLIGHTS
-              </Typography>
-            </Box>
-            <Box display='flex' flexDirection='column'>
-              {news.map((item) => {
-                return (
-                  <a href=''>
-                    <Typography color='white' variant='subtitle1'>
-                      {item}
-                    </Typography>
-                  </a>
-                );
-              })}
-            </Box>
-          </Box>
-        </Grid>
-        <Grid item sm={12} md={4} sx={{ backgroundColor: 'red' }}>
-          Here
-        </Grid>
-      </Grid>
+    <Box mx={[1, 3, 5, 10]} mt={[3, 4, 7]}>
+      <Box display='flex'>
+        <EventBox {...news} />
+        <EventOverview {...newsOverview} />
+      </Box>
 
       <Box display='flex' flexDirection='column'>
         <Box my={[2]}>
@@ -72,24 +105,26 @@ export const HomePage = () => {
             DOWN THE MEMORY LANE
           </Typography>
         </Box>
-        <Box>
-          {/* <Carousel
-            slidesPerPage={1}
-            slidesPerScroll={1}
-            autoPlay={3000}
-            animationSpeed={1000}
-            // onChange={setValue}
-            // value={value}
-            centered
+        {/* the carousel to show the current events images */}
+        {/* <Box>
+          <Carousel
+            autoPlay={true}
+            animation='slide'
+            navButtonsAlwaysVisible={true}
+            interval={2000}
+            indicatorIconButtonProps={{
+              style: {
+                display: 'none',
+              },
+            }}
           >
-            {items.map((item, index) => (
-              <Paper key={index} style={{ padding: '2rem' }}>
-                <Typography variant='h4'>{item.title}</Typography>
-                <Typography variant='body1'>{item.description}</Typography>
-              </Paper>
+            {items1.map((item, index) => (
+              <div key={index}>
+                <img style={{ height: '300px' }} src={item.image} alt={item.name} />
+              </div>
             ))}
-          </Carousel> */}
-        </Box>
+          </Carousel>
+        </Box> */}
       </Box>
     </Box>
   );
